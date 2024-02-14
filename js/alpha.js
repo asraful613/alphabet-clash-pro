@@ -8,6 +8,27 @@
 //     // console.log(playGroundSection);
 //     playGroundSection.classList.remove('hidden')
 // }
+function handlekeyboardUpEvent(event){
+    const playerPressed=event.key;
+    console.log('player pressed',playerPressed);
+
+    // get the expected to press
+    const currentAlphabetElement=document.getElementById('current-alphabet');
+    const currentAlphabet=currentAlphabetElement.innerText;
+    const expectedAlphabet=currentAlphabet.toLowerCase()
+    console.log(expectedAlphabet,playerPressed);
+    // check matched or not
+    if(playerPressed===expectedAlphabet){
+        console.log('you get a point');
+        console.log('you have pressed correctly',expectedAlphabet);
+        removeBackgroundColorById(expectedAlphabet)
+        continueGame();
+    }
+    else{
+        console.log('you missed.you lost a life');
+    }
+}
+document.addEventListener('keyup',handlekeyboardUpEvent)
 function continueGame(){
 // generate a random alphabet
     const alphabet=getARandomAlphabet();
